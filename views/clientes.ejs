@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produtos Inúteis - Clientes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">Produtos Inúteis <span class="useless-tag">100% inútil</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/"><i class="fas fa-home me-1"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/clientes"><i class="fas fa-users me-1"></i> Clientes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/produtos"><i class="fas fa-box-open me-1"></i> Produtos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pedidos"><i class="fas fa-shopping-cart me-1"></i> Pedidos</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-4">
+    <h1 class="mb-4">Clientes Excêntricos</h1>
+    
+    <div class="card mb-4">
+      <div class="card-body">
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th><i class="fas fa-id-card me-1"></i> ID</th>
+              <th><i class="fas fa-user me-1"></i> Nome</th>
+              <th><i class="fas fa-address-card me-1"></i> CPF</th>
+              <th><i class="fas fa-envelope me-1"></i> Email</th>
+              <th><i class="fas fa-phone me-1"></i> Telefone</th>
+              <th><i class="fas fa-map-marker-alt me-1"></i> Endereço</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% clientes.forEach(cliente => { %>
+              <tr>
+                <td><%= cliente.id %></td>
+                <td><%= cliente.nome %></td>
+                <td><%= cliente.cpf %></td>
+                <td><%= cliente.email %></td>
+                <td><%= cliente.telefone %></td>
+                <td><%= cliente.endereco %></td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-white py-3">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+          </div>
+          <div class="footer-links">
+            <a href="#">Sobre Nós</a>
+            <a href="#">FAQ</a>
+            <a href="#">Política de Devoluções</a>
+            <a href="#">Contato</a>
+          </div>
+        </div>
+        <div>
+          <p class="mb-0 d-flex align-items-center">
+            <i class="fas fa-headset me-2"></i> Suporte: (11) 4002-8922
+          </p>
+          <p class="mb-0 d-flex align-items-center">
+            <i class="fas fa-envelope me-2"></i> contato@produtosinuteis.com
+          </p>
+        </div>
+      </div>
+      <div class="text-center copyright">
+        <p> 2023 Produtos Inúteis - Desperdiçando seu dinheiro desde sempre</p>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

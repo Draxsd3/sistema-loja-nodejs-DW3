@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produtos Inúteis - <%= produto.nome %></title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">Produtos Inúteis <span class="useless-tag">100% inútil</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/"><i class="fas fa-home me-1"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/clientes"><i class="fas fa-users me-1"></i> Clientes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/produtos"><i class="fas fa-box-open me-1"></i> Produtos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pedidos"><i class="fas fa-shopping-cart me-1"></i> Pedidos</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-4">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/produtos">Produtos</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><%= produto.nome %></li>
+      </ol>
+    </nav>
+    
+    <div class="card product-detail-card">
+      <div class="row g-0">
+        <div class="col-md-6">
+          <div class="product-detail-image-container">
+            <% if (produto.id === 1) { %>
+              <img src="/img/canetasemtinta.png" class="product-detail-image" alt="<%= produto.nome %>">
+            <% } else if (produto.id === 2) { %>
+              <img src="/img/guardachuvafurado.png" class="product-detail-image" alt="<%= produto.nome %>">
+            <% } else if (produto.id === 3) { %>
+              <img src="/img/carrosel1.png" class="product-detail-image" alt="<%= produto.nome %>">
+            <% } else if (produto.id === 4) { %>
+              <img src="/img/oculosspray.png" class="product-detail-image" alt="<%= produto.nome %>">
+            <% } else if (produto.id === 5) { %>
+              <img src="/img/tecladosemletras.png" class="product-detail-image" alt="<%= produto.nome %>">
+            <% } else if (produto.id === 6) { %>
+              <img src="/img/espelhoparavampiro.png" class="product-detail-image" alt="<%= produto.nome %>">
+            <% } else if (produto.id === 7) { %>
+              <img src="/img/oculosspray.png" class="product-detail-image" alt="<%= produto.nome %>">
+            <% } else if (produto.id === 8) { %>
+              <img src="/img/guardachuvafurado.png" class="product-detail-image" alt="<%= produto.nome %>">
+            <% } else { %>
+              <img src="/img/wifisubmarino.png" class="product-detail-image" alt="<%= produto.nome %>">
+            <% } %>
+            <div class="product-badge product-detail-badge"><%= produto.categoria %></div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card-body product-detail-info">
+            <h1 class="product-detail-title"><%= produto.nome %></h1>
+            <div class="product-detail-price mb-3">R$ <%= produto.preco.toFixed(2) %></div>
+            
+            <div class="product-detail-rating mb-3">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <span class="rating-count">(42 avaliações)</span>
+            </div>
+            
+            <p class="product-detail-description"><%= produto.descricao %></p>
+            
+            <div class="product-detail-meta">
+              <div class="product-detail-stock">
+                <i class="fas fa-cubes me-1"></i> Estoque: 
+                <span class="<%= produto.estoque < 20 ? 'text-warning' : 'text-success' %>">
+                  <%= produto.estoque %> unidades
+                </span>
+              </div>
+              <div class="product-detail-category">
+                <i class="fas fa-tag me-1"></i> Categoria: <%= produto.categoria %>
+              </div>
+              <div class="product-detail-sku">
+                <i class="fas fa-barcode me-1"></i> SKU: INUT-<%= produto.id.toString().padStart(4, '0') %>
+              </div>
+            </div>
+            
+            <div class="product-detail-actions">
+              <div class="quantity-selector">
+                <button class="quantity-btn" id="decrease">-</button>
+                <input type="text" id="quantity" value="1" readonly>
+                <button class="quantity-btn" id="increase">+</button>
+              </div>
+              
+              <button class="btn btn-primary btn-lg w-100 mt-3 add-to-cart-btn">
+                <i class="fas fa-shopping-cart me-2"></i> Comprar agora
+              </button>
+              
+              <button class="btn btn-outline-secondary btn-lg w-100 mt-2 wishlist-btn">
+                <i class="far fa-heart me-2"></i> Adicionar aos favoritos
+              </button>
+            </div>
+            
+            <div class="product-detail-guarantee mt-4">
+              <div class="guarantee-item">
+                <i class="fas fa-shipping-fast"></i>
+                <span>Frete grátis para compras acima de R$ 99,00</span>
+              </div>
+              <div class="guarantee-item">
+                <i class="fas fa-undo"></i>
+                <span>30 dias para devolução (mas você não vai querer)</span>
+              </div>
+              <div class="guarantee-item">
+                <i class="fas fa-shield-alt"></i>
+                <span>Garantia de inutilidade por 1 ano</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="product-tabs mt-5">
+      <ul class="nav nav-tabs" id="productTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab">Descrição</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="specifications-tab" data-bs-toggle="tab" data-bs-target="#specifications" type="button" role="tab">Especificações</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab">Avaliações</button>
+        </li>
+      </ul>
+      <div class="tab-content p-4 border border-top-0 rounded-bottom" id="productTabsContent">
+        <div class="tab-pane fade show active" id="description" role="tabpanel">
+          <h4>Sobre <%= produto.nome %></h4>
+          <p><%= produto.descricao %></p>
+          <p>Este produto foi cuidadosamente projetado para ser o mais inútil possível. Nossa equipe de especialistas em inutilidade trabalhou incansavelmente para garantir que este item atenda aos mais altos padrões de irrelevância e desperdício de dinheiro.</p>
+          <p>Ao adquirir <%= produto.nome %>, você está não apenas comprando um produto sem utilidade prática, mas também fazendo parte do exclusivo clube de pessoas que gastam dinheiro com coisas absolutamente desnecessárias. Parabéns!</p>
+        </div>
+        <div class="tab-pane fade" id="specifications" role="tabpanel">
+          <div class="specs-table">
+            <div class="specs-row">
+              <div class="specs-label">Material</div>
+              <div class="specs-value">Plástico de alta inutilidade</div>
+            </div>
+            <div class="specs-row">
+              <div class="specs-label">Dimensões</div>
+              <div class="specs-value">Totalmente irrelevantes</div>
+            </div>
+            <div class="specs-row">
+              <div class="specs-label">Peso</div>
+              <div class="specs-value">Pesado o suficiente para fazer você se arrepender da compra</div>
+            </div>
+            <div class="specs-row">
+              <div class="specs-label">Cor</div>
+              <div class="specs-value">Variações de desapontamento</div>
+            </div>
+            <div class="specs-row">
+              <div class="specs-label">Garantia</div>
+              <div class="specs-value">1 ano de arrependimento garantido</div>
+            </div>
+            <div class="specs-row">
+              <div class="specs-label">Origem</div>
+              <div class="specs-value">Fabricado no Vale da Inutilidade</div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="reviews" role="tabpanel">
+          <div class="reviews-summary mb-4">
+            <div class="overall-rating">
+              <div class="rating-number">4.5</div>
+              <div class="rating-stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+              <div class="rating-count">Baseado em 42 avaliações</div>
+            </div>
+            <div class="rating-bars">
+              <div class="rating-bar-item">
+                <span class="rating-label">5 estrelas</span>
+                <div class="progress">
+                  <div class="progress-bar bg-success" style="width: 75%"></div>
+                </div>
+                <span class="rating-count">32</span>
+              </div>
+              <div class="rating-bar-item">
+                <span class="rating-label">4 estrelas</span>
+                <div class="progress">
+                  <div class="progress-bar bg-success" style="width: 17%"></div>
+                </div>
+                <span class="rating-count">7</span>
+              </div>
+              <div class="rating-bar-item">
+                <span class="rating-label">3 estrelas</span>
+                <div class="progress">
+                  <div class="progress-bar bg-warning" style="width: 5%"></div>
+                </div>
+                <span class="rating-count">2</span>
+              </div>
+              <div class="rating-bar-item">
+                <span class="rating-label">2 estrelas</span>
+                <div class="progress">
+                  <div class="progress-bar bg-danger" style="width: 2%"></div>
+                </div>
+                <span class="rating-count">1</span>
+              </div>
+              <div class="rating-bar-item">
+                <span class="rating-label">1 estrela</span>
+                <div class="progress">
+                  <div class="progress-bar bg-danger" style="width: 0%"></div>
+                </div>
+                <span class="rating-count">0</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="review-list">
+            <div class="review-item">
+              <div class="review-header">
+                <div class="review-user">
+                  <img src="https://ui-avatars.com/api/?name=João+Silva&background=8e44ad&color=fff" alt="João Silva" class="review-avatar">
+                  <div>
+                    <div class="review-name">João Silva</div>
+                    <div class="review-date">12/11/2023</div>
+                  </div>
+                </div>
+                <div class="review-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+              <div class="review-title">Exatamente o que eu esperava!</div>
+              <div class="review-content">
+                <p>Este produto é absolutamente inútil, exatamente como prometido! Estou muito satisfeito por ter jogado meu dinheiro fora com algo tão desnecessário. Recomendo a todos que queiram desperdiçar dinheiro de forma criativa.</p>
+              </div>
+            </div>
+            
+            <div class="review-item">
+              <div class="review-header">
+                <div class="review-user">
+                  <img src="https://ui-avatars.com/api/?name=Maria+Oliveira&background=27ae60&color=fff" alt="Maria Oliveira" class="review-avatar">
+                  <div>
+                    <div class="review-name">Maria Oliveira</div>
+                    <div class="review-date">10/11/2023</div>
+                  </div>
+                </div>
+                <div class="review-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+              </div>
+              <div class="review-title">Quase perfeito em sua inutilidade</div>
+              <div class="review-content">
+                <p>Por incrível que pareça, acabei encontrando um uso para este produto, o que é desapontador considerando que ele deveria ser completamente inútil. Ainda assim, é 99% inútil, então estou bastante satisfeita com a compra.</p>
+              </div>
+            </div>
+            
+            <div class="review-item">
+              <div class="review-header">
+                <div class="review-user">
+                  <img src="https://ui-avatars.com/api/?name=Carlos+Souza&background=e74c3c&color=fff" alt="Carlos Souza" class="review-avatar">
+                  <div>
+                    <div class="review-name">Carlos Souza</div>
+                    <div class="review-date">05/11/2023</div>
+                  </div>
+                </div>
+                <div class="review-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+              </div>
+              <div class="review-title">Esperava algo mais inútil</div>
+              <div class="review-content">
+                <p>Fiquei um pouco decepcionado porque este produto não é tão inútil quanto eu esperava. Consegui usá-lo como peso de papel, o que lhe dá alguma utilidade. Espero que a empresa melhore e crie produtos verdadeiramente inúteis no futuro.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="related-products mt-5">
+      <h3 class="section-title">Mais Produtos Inúteis</h3>
+      <div class="row">
+        <% produtosRelacionados.forEach(relatedProduct => { %>
+          <div class="col-md-4 mb-4">
+            <div class="product-card card h-100">
+              <div class="product-image-container">
+                <% if (relatedProduct.id === 1) { %>
+                  <img src="/img/canetasemtinta.png" class="product-image" alt="<%= relatedProduct.nome %>">
+                <% } else if (relatedProduct.id === 2) { %>
+                  <img src="/img/guardachuvafurado.png" class="product-image" alt="<%= relatedProduct.nome %>">
+                <% } else if (relatedProduct.id === 3) { %>
+                  <img src="/img/carrosel1.png" class="product-image" alt="<%= relatedProduct.nome %>">
+                <% } else if (relatedProduct.id === 4) { %>
+                  <img src="/img/oculosspray.png" class="product-image" alt="<%= relatedProduct.nome %>">
+                <% } else if (relatedProduct.id === 5) { %>
+                  <img src="/img/tecladosemletras.png" class="product-image" alt="<%= relatedProduct.nome %>">
+                <% } else if (relatedProduct.id === 6) { %>
+                  <img src="/img/espelhoparavampiro.png" class="product-image" alt="<%= relatedProduct.nome %>">
+                <% } else if (relatedProduct.id === 7) { %>
+                  <img src="/img/oculosspray.png" class="product-image" alt="<%= relatedProduct.nome %>">
+                <% } else if (relatedProduct.id === 8) { %>
+                  <img src="/img/guardachuvafurado.png" class="product-image" alt="<%= relatedProduct.nome %>">
+                <% } else { %>
+                  <img src="/img/wifisubmarino.png" class="product-image" alt="<%= relatedProduct.nome %>">
+                <% } %>
+                <div class="product-badge"><%= relatedProduct.categoria %></div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title"><%= relatedProduct.nome %></h5>
+                <p class="card-text description"><%= relatedProduct.descricao %></p>
+                <div class="product-details">
+                  <div class="product-price">R$ <%= relatedProduct.preco.toFixed(2) %></div>
+                  <div class="product-stock">
+                    <span class="stock-badge <%= relatedProduct.estoque < 20 ? 'low-stock' : '' %>">
+                      <i class="fas fa-cubes me-1"></i> <%= relatedProduct.estoque %>
+                    </span>
+                  </div>
+                </div>
+                <a href="/produtos/<%= relatedProduct.id %>" class="btn btn-primary mt-3 w-100">
+                  <i class="fas fa-eye me-2"></i> Ver Produto
+                </a>
+              </div>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-white py-3">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+          </div>
+          <div class="footer-links">
+            <a href="#">Sobre Nós</a>
+            <a href="#">FAQ</a>
+            <a href="#">Política de Devoluções</a>
+            <a href="#">Contato</a>
+          </div>
+        </div>
+        <div>
+          <p class="mb-0 d-flex align-items-center">
+            <i class="fas fa-headset me-2"></i> Suporte: (11) 4002-8922
+          </p>
+          <p class="mb-0 d-flex align-items-center">
+            <i class="fas fa-envelope me-2"></i> contato@produtosinuteis.com
+          </p>
+        </div>
+      </div>
+      <div class="text-center copyright">
+        <p> 2023 Produtos Inúteis - Desperdiçando seu dinheiro desde sempre</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Quantity selector
+      const quantityInput = document.getElementById('quantity');
+      const decreaseBtn = document.getElementById('decrease');
+      const increaseBtn = document.getElementById('increase');
+      
+      decreaseBtn.addEventListener('click', function() {
+        let quantity = parseInt(quantityInput.value);
+        if (quantity > 1) {
+          quantityInput.value = quantity - 1;
+        }
+      });
+      
+      increaseBtn.addEventListener('click', function() {
+        let quantity = parseInt(quantityInput.value);
+        quantityInput.value = quantity + 1;
+      });
+      
+      // Add to cart button animation
+      const addToCartBtn = document.querySelector('.add-to-cart-btn');
+      addToCartBtn.addEventListener('click', function() {
+        this.innerHTML = '<i class="fas fa-check me-2"></i> Adicionado!';
+        this.classList.remove('btn-primary');
+        this.classList.add('btn-success');
+        
+        setTimeout(() => {
+          this.innerHTML = '<i class="fas fa-shopping-cart me-2"></i> Comprar agora';
+          this.classList.remove('btn-success');
+          this.classList.add('btn-primary');
+        }, 2000);
+      });
+      
+      // Wishlist button toggle
+      const wishlistBtn = document.querySelector('.wishlist-btn');
+      wishlistBtn.addEventListener('click', function() {
+        const icon = this.querySelector('i');
+        if (icon.classList.contains('far')) {
+          icon.classList.remove('far');
+          icon.classList.add('fas');
+          this.classList.add('active');
+        } else {
+          icon.classList.remove('fas');
+          icon.classList.add('far');
+          this.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

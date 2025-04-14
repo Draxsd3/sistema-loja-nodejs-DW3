@@ -1,0 +1,241 @@
+/* Additional styles to complement styles.css */
+.floating-products {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.product-bubble {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  color: #8e44ad;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  padding: 10px;
+  text-align: center;
+}
+
+.product-bubble:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.product-bubble span {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 5px;
+  color: #e74c3c;
+}
+
+.product-bubble-1 {
+  top: 0;
+  left: 90px;
+  animation: float 6s ease-in-out infinite;
+}
+
+.product-bubble-2 {
+  bottom: 30px;
+  left: 30px;
+  animation: float 7s ease-in-out infinite 1s;
+}
+
+.product-bubble-3 {
+  bottom: 40px;
+  right: 20px;
+  animation: float 5s ease-in-out infinite 0.5s;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.product-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.filter-btn {
+  background-color: #f8f9fa;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  padding: 5px 15px;
+  font-size: 0.9rem;
+  color: #555;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover, .filter-btn.active {
+  background-color: #8e44ad;
+  color: white;
+  border-color: #8e44ad;
+}
+
+.pedido-card {
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  border: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.pedido-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.pedido-card .card-header {
+  background-color: #f8f9fa;
+  border-bottom: none;
+  padding: 1rem 1.5rem;
+}
+
+.pedido-number {
+  font-weight: 700;
+  color: #8e44ad;
+  margin: 0;
+}
+
+.pedido-date {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.progress-tracker {
+  margin: 2rem 0;
+  position: relative;
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+.progress-line {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background-color: #eee;
+  z-index: 1;
+}
+
+.progress-line-active {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  height: 5px;
+  background-color: #8e44ad;
+  z-index: 1;
+  transition: width 0.5s ease;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.step-icon {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.step-label {
+  font-size: 0.8rem;
+  color: #777;
+  text-align: center;
+}
+
+.progress-step.active .step-icon {
+  background-color: #8e44ad;
+  color: white;
+}
+
+.progress-step.active .step-label {
+  color: #8e44ad;
+  font-weight: 600;
+}
+
+.fun-facts {
+  background-color: #f8f9fa;
+  padding: 2rem;
+  border-radius: 1rem;
+  margin: 3rem 0;
+}
+
+.fun-fact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.fun-fact-item:last-child {
+  margin-bottom: 0;
+}
+
+.fun-fact-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(142, 68, 173, 0.1);
+  color: #8e44ad;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.fun-fact-content {
+  flex: 1;
+}
+
+.loading-animation {
+  width: 100%;
+  height: 5px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  margin: 1rem 0;
+}
+
+.loading-bar {
+  position: absolute;
+  height: 100%;
+  background: linear-gradient(90deg, #9b59b6, #3498db);
+  border-radius: 5px;
+  animation: loading 1.5s ease-in-out infinite;
+}
+
+@keyframes loading {
+  0% { width: 0; left: 0; }
+  50% { width: 40%; }
+  100% { width: 0; left: 100%; }
+}
