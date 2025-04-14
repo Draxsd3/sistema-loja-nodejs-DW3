@@ -1,48 +1,32 @@
-<h1 align="center">🛒 SistemaLoja - Aplicação Node.js com Express e Bootstrap</h1>
-
-<p align="center">
-  Uma aplicação web simples construída com <strong>Node.js</strong>, <strong>Express</strong> e <strong>Bootstrap</strong> para gerenciar clientes, produtos e pedidos de uma loja fictícia.
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Nodemon-76D04B?style=for-the-badge&logo=nodemon&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white"/>
-</p>
 
 ---
 
-## 🚀 Funcionalidades
+## 🧪 Exemplos de Dados
 
-- Página inicial com navegação entre seções
-- Visualização de dados de **clientes**, **produtos** e **pedidos**
-- Interface responsiva com **Bootstrap**
-- Organização de rotas utilizando **Express.js**
-- Dados dinâmicos simulados por **arrays de objetos**
-- Atualização automática no desenvolvimento com **Nodemon**
+Os dados são simulados usando arrays de objetos. Exemplo:
 
----
+```js
+const clientes = [
+  { nome: "João Silva", cpf: "123.456.789-00", endereco: "Rua A, 123" },
+  { nome: "Maria Souza", cpf: "987.654.321-00", endereco: "Av. B, 456" }
+];
 
-## 📁 Estrutura de Pastas
+🌐 Rotas
+Rota	Descrição
+/	Página inicial com navbar
+/clientes	Exibe tabela com nome, CPF e endereço
+/produtos	Exibe tabela com nome, preço e categoria
+/pedidos	Exibe tabela com número e valor do pedido
+🛠 Tecnologias Utilizadas
+Node.js
 
-SistemaLoja/ ├── public/ │ ├── css/ │ ├── js/ │ └── images/ ├── routes/ │ ├── index.js │ ├── clientes.js │ ├── produtos.js │ └── pedidos.js ├── views/ │ ├── partials/ │ ├── index.ejs │ ├── clientes.ejs │ ├── produtos.ejs │ └── pedidos.ejs ├── app.js └── package.json
+Express
 
-yaml
-Copiar
-Editar
+Nodemon
 
----
+Bootstrap 5
 
-## 🛠️ Tecnologias Utilizadas
-
-- [Node.js](https://nodejs.org/)
-- [Express](https://expressjs.com/)
-- [Nodemon](https://www.npmjs.com/package/nodemon)
-- [Bootstrap 5](https://getbootstrap.com/)
-- [EJS](https://ejs.co/) (para renderização de views)
-
----
+EJS (para templates HTML dinâmicos)
 
 ## 📦 Instalação
 
@@ -62,33 +46,17 @@ npm i nodemon
 # Inicie a aplicação
 nodemon app.js
 
-🌐 Rotas Disponíveis
-Rota	Descrição
-/	Página inicial com navbar
-/clientes	Tabela com lista de clientes
-/produtos	Tabela com lista de produtos
-/pedidos	Tabela com pedidos realizados
-
-🧪 Exemplo de Dados
-Os dados são passados via arrays de objetos, como no exemplo abaixo:
-
-js
-Copiar
-Editar
-const clientes = [
-  { nome: "João Silva", cpf: "123.456.789-00", endereco: "Rua A, 123" },
-  ...
-];
 💡 Melhorias Futuras
-Integração com banco de dados
+Conexão com banco de dados (MongoDB ou MySQL)
 
-Autenticação de usuários
+Sistema de login com autenticação
 
-Cadastro e edição de dados
+Formulários para cadastro de dados
 
-Dashboard com gráficos e relatórios
+Painel administrativo com gráficos
 
 📄 Licença
-Este projeto está sob a licença MIT. Sinta-se livre para usar, modificar e compartilhar. 😉
+Este projeto está licenciado sob a licença MIT.
 
-<p align="center"> Feito com ❤️ por <strong>Draxsd3</strong> </p> ```
+
+Feito com ❤️ por Draxsd3
