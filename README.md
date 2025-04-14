@@ -28,9 +28,6 @@
 
 SistemaLoja/ ├── public/ │ ├── css/ │ ├── js/ │ └── images/ ├── routes/ │ ├── index.js │ ├── clientes.js │ ├── produtos.js │ └── pedidos.js ├── views/ │ ├── partials/ │ ├── index.ejs │ ├── clientes.ejs │ ├── produtos.ejs │ └── pedidos.ejs ├── app.js └── package.json
 
-yaml
-Copiar
-Editar
 
 ---
 
@@ -46,7 +43,7 @@ Editar
 
 ## 📦 Instalação
 
-
+```
 # Clone o repositório
 git clone https://github.com/Draxsd3/sistema-loja-nodejs.git
 
@@ -62,6 +59,7 @@ npm i nodemon
 # Inicie a aplicação
 nodemon app.js
 
+```
 
 
 🌐 Rotas Disponíveis
@@ -73,6 +71,7 @@ Rota	Descrição
 
 🧪 Exemplo de Dados
 Os dados são passados via arrays de objetos, como no exemplo abaixo:
+```
 
 js
 Copiar
@@ -81,6 +80,7 @@ const clientes = [
   { nome: "João Silva", cpf: "123.456.789-00", endereco: "Rua A, 123" },
   ...
 ];
+```
 
 
 💡 Melhorias Futuras
@@ -94,5 +94,8 @@ Dashboard com gráficos e relatórios
 
 📄 Licença
 Este projeto está sob a licença MIT. Sinta-se livre para usar, modificar e compartilhar. 😉
+```
 
 <p align="center"> Feito com ❤️ por <strong>Draxsd3</strong> </p> ```
+```
+
