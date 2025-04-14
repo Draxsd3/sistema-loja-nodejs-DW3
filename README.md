@@ -46,7 +46,7 @@ Editar
 
 ## 📦 Instalação
 
-```bash
+
 # Clone o repositório
 git clone https://github.com/Draxsd3/sistema-loja-nodejs.git
 
@@ -61,6 +61,8 @@ npm i nodemon
 
 # Inicie a aplicação
 nodemon app.js
+
+
 
 🌐 Rotas Disponíveis
 Rota	Descrição
